@@ -1,14 +1,15 @@
 close all; clear all; clc
 
 % Definir los puntos para el corazón
-t = linspace(0, 2*pi, 100);  % Parámetro temporal
+t = linspace(0, 2*pi, 1000);  % 1000 puntos para el corazón
+alpha = 0.5;  % Factor de inclinación (ajusta esto para cambiar la inclinación)
 
-% Coordenadas del corazón en el plano XY
-x = 16 * sin(t).^3;
-y = 13 * cos(t) - 5 * cos(2*t) - 2 * cos(3*t) - cos(4*t);
+% Ecuaciones paramétricas del corazón
+x = 16 * sin(t).^3;  % Coordenada x
+y = 13 * cos(t) - 5 * cos(2*t) - 2 * cos(3*t) - cos(4*t);  % Coordenada y
 
-% Coordenada Z (mantener una pequeña variación para un movimiento en 3D)
-z = 2 + 0.2 * sin(t);  % Constante + pequeña variación sinusoidal
+% Inclinación en el eje X
+z = alpha * x;  % Coordenada z, depende de x para inclinar el corazón% Constante + pequeña variación sinusoidal
 
 % Inicialización de variables
 qtotal = [0 0 0];      % Configuración inicial (3GDL)
@@ -66,7 +67,7 @@ Dqtotal = Dqtotal(2:end,:);
 % Dibujar la trayectoria del corazón
 figure; 
 plot3(x, y, z, '*', 'linewidth', 2); grid
-title('Trayectoria de un corazón'); xlabel('x [cm]'); ylabel('y [cm]'); zlabel('z [cm]')
+title('Trayectoria'); xlabel('x [cm]'); ylabel('y [cm]'); zlabel('z [cm]')
 
 % Animar el movimiento del robot de 3GDL
 disp('Presione una tecla para continuar')
