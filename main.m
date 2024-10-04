@@ -1,7 +1,7 @@
 close all; clear all; clc
 
-% Definir los puntos para el corazón
-t = linspace(0, 2*pi, 1000);  % 1000 puntos para el corazón
+% Definir los puntos
+t = linspace(0, 2*pi, 100);  % 1000 puntos
 alpha = 0.5;  % Factor de inclinación (ajusta esto para cambiar la inclinación)
 
 % Ecuaciones paramétricas del corazón
@@ -16,7 +16,7 @@ qtotal = [0 0 0];      % Configuración inicial (3GDL)
 Dqtotal = [0 0 0];     % Velocidades articulares iniciales
 deltap = [0.1 0.1 0.1];  % Error tolerado en la posición
 wmax = [8 2 1];        % Velocidades máximas de las articulaciones
-h = 1;                 % Paso de integración
+h = 2;                 % Paso de integración
 
 % Bucle para generar trayectorias punto a punto del corazón
 for i = 1:length(x) - 1
@@ -64,12 +64,10 @@ end
 qtotal = qtotal(2:end,:);
 Dqtotal = Dqtotal(2:end,:);
 
-% Dibujar la trayectoria del corazón
-figure; 
-plot3(x, y, z, '*', 'linewidth', 2); grid
-title('Trayectoria'); xlabel('x [cm]'); ylabel('y [cm]'); zlabel('z [cm]')
+% Dibujar la trayectoria 
+%figure; 
+%plot3(x, y, z, '*', 'linewidth', 2); grid
+%title('Trayectoria'); xlabel('x [cm]'); ylabel('y [cm]'); zlabel('z [cm]')
 
 % Animar el movimiento del robot de 3GDL
-disp('Presione una tecla para continuar')
-pause()
 movimientoDelRobot(qtotal)  % Función para simular el movimiento del robot (debe implementarla)

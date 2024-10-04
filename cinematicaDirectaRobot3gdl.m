@@ -28,4 +28,4 @@ p = [5 5 5]
 cinematicaInversaRobot3gdl(p)
 
 
-dibujarSistemasDeEjesCoordenadosDeRobot(TT);
+%dibujarSistemasDeEjesCoordenadosDeRobot(TT);
